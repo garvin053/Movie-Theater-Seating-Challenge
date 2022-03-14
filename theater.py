@@ -3,7 +3,6 @@ author: garvin
 date: 03/12/2022
 '''
 
-
 def read_file(file_name):
     # return request array like [[R001,2],[R002,4]]
     request_array = []
@@ -39,7 +38,7 @@ class Theater:
         self.number_of_seats = self.rows * self.columns
         self.file_name = file_name
         self.remain_seats = [self.columns for _ in range(self.rows)]
-        self.write_file_name = 'output_'+self.file_name
+        self.write_file_name = 'output_' + self.file_name
         self.buffer_seats = buffer_seats
         self.safe_row = 1
 
@@ -61,12 +60,10 @@ class Theater:
                 line = identify + ' ' + self.allocate(identify, group_number)[:-1]
             output.append(line)
 
-        #print(output)
         write_file(self.write_file_name, output)
         return self.write_file_name
 
     def allocate(self, identify, group_number):
-        # return assigned seats [F16,F17,F18,F19]
         row = self.rows // 2 - 1
         up = True
         counter = self.safe_row
@@ -78,7 +75,7 @@ class Theater:
                 for i in range(self.columns - self.remain_seats[row] + 1,
                                self.columns - self.remain_seats[row] + 1 + group_number):
                     res += seat_map(row) + str(i) + ','
-                seats = min(group_number +self.buffer_seats, self.remain_seats[row])
+                seats = min(group_number + self.buffer_seats, self.remain_seats[row])
                 self.remain_seats[row] -= seats
                 self.number_of_seats -= seats
                 return res
@@ -93,25 +90,23 @@ class Theater:
                 up = True
 
         # if this group have to be allocated in different rows
-
         row = self.rows // 2 - 1
         up = True
         counter = self.safe_row
         res = ''
-        print(self.number_of_seats,self.remain_seats)
+
         while group_number > 0:
             if self.remain_seats[row] > 0:
                 start = self.columns - self.remain_seats[row] + 1
-                for i in range(start, self.columns+1):
+                for i in range(start, self.columns + 1):
                     if group_number > 0:
-
                         res += seat_map(row) + str(i) + ','
                         group_number -= 1
                         self.remain_seats[row] -= 1
                         self.number_of_seats -= 1
             if self.remain_seats[row] != 0:
-                self.remain_seats[row] -=min(self.remain_seats[row], self.buffer_seats)
                 self.number_of_seats -= min(self.remain_seats[row], self.buffer_seats)
+                self.remain_seats[row] -= min(self.remain_seats[row], self.buffer_seats)
 
             if up:
                 row += counter
