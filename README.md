@@ -8,23 +8,23 @@ design and write a seat assignment program to maximize both customer satisfactio
 
 ## Assumptions:
 
-The theater cannot reserve seats for a group if the requested number of seats is greater than the available seats. In that case, the customers are informed about the insufficient number of available seats.
+1. The theater cannot reserve seats for a group if the requested number of seats is greater than the available seats. In that case, the customers are informed about the insufficient number of available seats.
 
-There will be up to 26 rows in the movie theater. If there are more, switch over to numbering system. The row should be marked as numbers like '10' rather than 'J'
+2. There will be up to 26 rows in the movie theater. If there are more, switch over to numbering system. The row should be marked as numbers like '10' rather than 'J'
 
-The reservation number(R###) will be in sequential order like (R001, R002, R003...) in the input file and all reservations are in the right format like (R001 2)
+3. The reservation number(R###) will be in sequential order like (R001, R002, R003...) in the input file and all reservations are in the right format like (R001 2)
 
 ## Customer Satisfaction:
 
-Since customers are reserving seats for groups, they would prefer sitting togather. So the first priority will be to allocate seats for the group in a single row.
+1. Since customers are reserving seats for groups, they would prefer sitting togather. So the first priority will be to allocate seats for the group in a single row.
 
-Since the middle seats give a better viewing experience in the movie theater, customers who come first will be allocated seats in the middle rows.
+2. Since the middle seats give a better viewing experience in the movie theater, customers who come first will be allocated seats in the middle rows.
 
 ## Maximum Theater Utilization:
 
-To make sure that we are able to accommodate as many groups as possible and also keep them satisfied by allocating consecutive seats, we start allocating seats from the first column. This will allow us to allocate seats for maximum number of groups in a single row.
+1. To make sure that we are able to accommodate as many groups as possible and also keep them satisfied by allocating consecutive seats, we start allocating seats from the first column. This will allow us to allocate seats for maximum number of groups in a single row.
 
-In one or two cases if we are not able to accommodate a group in a single row, then we allocate the seats wherever there is a available seat in the theater.
+2. In one or two cases if we are not able to accommodate a group in a single row, then we allocate the seats wherever there is a available seat in the theater.
 
 ## The algorithm follows following rules:
 
