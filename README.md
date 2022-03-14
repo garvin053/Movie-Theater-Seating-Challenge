@@ -14,6 +14,8 @@ design and write a seat assignment program to maximize both customer satisfactio
 
 3. The reservation number(R###) will be in sequential order like (R001, R002, R003...) in the input file and all reservations are in the right format like (R001 2)
 
+4.For the purpose of public safety, group member can sit together, different group need to keep 3 seats distance in a row.
+
 ## Customer Satisfaction:
 
 1. Since customers are reserving seats for groups, they would prefer sitting togather. So the first priority will be to allocate seats for the group in a single row.
